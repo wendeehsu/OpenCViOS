@@ -14,6 +14,8 @@
 		2119FE55224F21D800650E6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2119FE53224F21D800650E6E /* LaunchScreen.storyboard */; };
 		2119FE60224F21D900650E6E /* TestOpenCVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2119FE5F224F21D900650E6E /* TestOpenCVTests.swift */; };
 		2119FE6B224F21D900650E6E /* TestOpenCVUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2119FE6A224F21D900650E6E /* TestOpenCVUITests.swift */; };
+		2119FE79224F223300650E6E /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2119FE78224F223300650E6E /* opencv2.framework */; };
+		2119FE7D224F3D1200650E6E /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2119FE7C224F3D1200650E6E /* OpenCVWrapper.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,10 @@
 		2119FE66224F21D900650E6E /* TestOpenCVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestOpenCVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2119FE6A224F21D900650E6E /* TestOpenCVUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestOpenCVUITests.swift; sourceTree = "<group>"; };
 		2119FE6C224F21D900650E6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2119FE78224F223300650E6E /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		2119FE7A224F3D1200650E6E /* TestOpenCV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestOpenCV-Bridging-Header.h"; sourceTree = "<group>"; };
+		2119FE7B224F3D1200650E6E /* OpenCVWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCVWrapper.h; sourceTree = "<group>"; };
+		2119FE7C224F3D1200650E6E /* OpenCVWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2119FE79224F223300650E6E /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,10 +84,13 @@
 		2119FE3E224F21D600650E6E = {
 			isa = PBXGroup;
 			children = (
+				2119FE7B224F3D1200650E6E /* OpenCVWrapper.h */,
+				2119FE7C224F3D1200650E6E /* OpenCVWrapper.mm */,
 				2119FE49224F21D700650E6E /* TestOpenCV */,
 				2119FE5E224F21D900650E6E /* TestOpenCVTests */,
 				2119FE69224F21D900650E6E /* TestOpenCVUITests */,
 				2119FE48224F21D700650E6E /* Products */,
+				2119FE7A224F3D1200650E6E /* TestOpenCV-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +107,7 @@
 		2119FE49224F21D700650E6E /* TestOpenCV */ = {
 			isa = PBXGroup;
 			children = (
+				2119FE78224F223300650E6E /* opencv2.framework */,
 				2119FE4A224F21D700650E6E /* AppDelegate.swift */,
 				2119FE4C224F21D700650E6E /* ViewController.swift */,
 				2119FE4E224F21D700650E6E /* Main.storyboard */,
@@ -193,6 +204,7 @@
 				TargetAttributes = {
 					2119FE46224F21D600650E6E = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 					2119FE5A224F21D900650E6E = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -258,6 +270,7 @@
 			files = (
 				2119FE4D224F21D700650E6E /* ViewController.swift in Sources */,
 				2119FE4B224F21D700650E6E /* AppDelegate.swift in Sources */,
+				2119FE7D224F3D1200650E6E /* OpenCVWrapper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,14 +443,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4QKWP52TNX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestOpenCV",
+				);
 				INFOPLIST_FILE = TestOpenCV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wendeehsu.TestOpenCV;
+				PRODUCT_BUNDLE_IDENTIFIER = wendeehsu.project.TestOpenCV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TestOpenCV-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -447,14 +468,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4QKWP52TNX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestOpenCV",
+				);
 				INFOPLIST_FILE = TestOpenCV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wendeehsu.TestOpenCV;
+				PRODUCT_BUNDLE_IDENTIFIER = wendeehsu.project.TestOpenCV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TestOpenCV-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
