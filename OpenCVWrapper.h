@@ -15,4 +15,7 @@
 // Turn image to gray scale.
 +(UIImage *) MakeGrayof: (UIImage *) image;
 
+// Detect circle in image.
++(UIImage *) DetectCircleof: (UIImage *) image;
+
 @end
